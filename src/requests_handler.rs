@@ -74,12 +74,12 @@ pub fn handle_sent_messages(
 /// * `receiver` - Channel receiver to get messages
 /// * `senders_mutex_pointer` - Atomic reference-counting pointer for the senders array
 pub fn receive_message(
-    receiver: mpsc::Reciver<String>,
+    receiver: mpsc::Receiver<String>,
     senders_mutex_pointer: Arc<Mutex<Vec<mpsc::Sender<String>>>>,
 ) {
     loop {
         /* blocking listening procedure for incoming messages */
-        let message_result = reciver.recv();
+        let message_result = receiver.recv();
 
         /* ignore the message if this is an error result object */
         if message_result.is_err() {
@@ -90,7 +90,7 @@ pub fn receive_message(
 
         /* create a reference to the senders list, first access it through
         the pointer and then creates a reference to this array */
-        let sender = &*guard;
+        let senders = &*guard;
 
         /* get the message from the receiver result */
         let message = message_result.unwrap();
