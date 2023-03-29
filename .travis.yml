@@ -1,9 +1,15 @@
 language: rust
-rust:
-    - nightly
-
-before_script:
-    - cd rust-chat-server/ 
+rust: stable
 
 script:
-    - cargo build
+  - cargo build 
+  - cargo test 
+
+branches:
+  only:
+    # Pushes and PR to the master branch
+    - master
+    
+notifications:
+  email:
+    on_success: never
