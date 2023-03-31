@@ -1,5 +1,7 @@
 # Rust chat server
 
+[![Build Status](https://app.travis-ci.com/ChamathKB/rust-chat-server.svg?token=DqNWbcbaY78hF4ZsimVD&branch=master)](https://app.travis-ci.com/ChamathKB/rust-chat-server)
+
 Chat backend server build from Rust 🦀️.
 
 ## Build
